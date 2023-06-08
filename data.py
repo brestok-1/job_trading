@@ -37,4 +37,3 @@ def _configure_df(df: pd.DataFrame) -> pd.DataFrame:
     df = df[['Open', 'High', 'Low', 'Close', 'Volume']]
     df = df.astype('float')
     return df
-
