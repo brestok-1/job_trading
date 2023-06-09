@@ -37,3 +37,7 @@ def _configure_df(df: pd.DataFrame) -> pd.DataFrame:
     df = df[['Open', 'High', 'Low', 'Close', 'Volume']]
     df = df.astype('float')
     return df
+
+
+DATA_ETH = get_klines('ETHUSDT', Client.KLINE_INTERVAL_1MINUTE, 120)
+DATA_BTC = get_klines('BTCUSDT', Client.KLINE_INTERVAL_1MINUTE, 120)

@@ -7,7 +7,7 @@ from binance import Client
 from statsmodels.regression.linear_model import RegressionResults
 import statsmodels.api as sm
 
-from data import get_klines
+from data import get_klines, DATA_ETH, DATA_BTC
 
 
 class Data(NamedTuple):
@@ -15,9 +15,9 @@ class Data(NamedTuple):
     data_btc: pd.DataFrame
 
 
-def get_own_movements(data: Data):
+def get_own_movements(btc_impact: int):
+    """This function returns the Etherium exchange rate without the influence of Bitcoin"""
     last_price = _get_last_price()
-    btc_impact = _get_btc_ratio(data)
     eth_own_price = last_price.data_eth['Close'].values - btc_impact * last_price.data_btc['Close'].values
     return eth_own_price
 
@@ -28,7 +28,8 @@ def _get_last_price() -> Data:
     return Data(eth_last_price, btc_last_price)
 
 
-def _get_btc_ratio(data: Data) -> int:
+def get_btc_ratio(data: Data) -> int:
+    """This function returns the coefficient of influence of Bitcoin on the Etherium"""
     linear_model = _get_regression_linear_model(data)
     btc_impact = linear_model.params[1]
     return btc_impact
@@ -48,9 +49,12 @@ def _reshape_data_btc(data: Data) -> numpy.ndarray:
 
 
 def print_eth_changes(eth_own_movements: list) -> None:
+    """The function prints the result of the change
+     in the Etherium exchange rate without the influence of Bitcoin
+     if the change was more than 1%"""
     changes = _get_changes_in_percent(eth_own_movements)
     if changes > 1:
-        print(f'During the last hour, the change was {changes}%')
+        print(f'During the last hour, the change was {changes:.2f}%')
 
 
 def _get_changes_in_percent(eth_own_movements: list) -> int:
@@ -58,3 +62,6 @@ def _get_changes_in_percent(eth_own_movements: list) -> int:
     max_eth = max(eth_own_movements)
     changes_in_percent = (max_eth - min_eth) / min_eth * 100
     return changes_in_percent
+
+
+BTC_IMPACT = get_btc_ratio(Data(DATA_ETH, DATA_BTC))
