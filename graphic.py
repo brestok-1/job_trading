@@ -1,11 +1,16 @@
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
+from scipy.stats import pearsonr
 
 from movements import Data, BTC_IMPACT
 
 
 def print_dependency_level(data: Data) -> None:
     """This function makes a price movement graphic"""
+    # correlation = _get_correlation(data)
+    # print(f"Correlation: {correlation}")
+    # cointegration = _get_cointegration(data)
+    # print(f'Cointegration: {cointegration}')
     btc_impact_price = _get_predict(data)
     fig, ax = plt.subplots()
     data.data_eth.Close.plot(ax=ax)
@@ -29,3 +34,13 @@ def _get_predict(data: Data) -> int:
     btc_impact_price = model.predict(sm.add_constant(data.data_btc[['Open', 'High', 'Low', 'Volume']] * BTC_IMPACT))
     data.data_eth['IM'] = data.data_eth['Close'] - btc_impact_price
     return btc_impact_price
+
+
+def _get_correlation(data: Data) -> int:
+    correlation = pearsonr(data.data_eth['Close'].values, data.data_btc['Close'].values)
+    return correlation[0]
+
+
+def _get_cointegration(data: Data) -> int:
+    coint = sm.tsa.stattools.coint(data.data_eth['Close'].values, data.data_btc['Close'].values)
+    return coint[1]

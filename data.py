@@ -9,7 +9,6 @@ binance_api_key = os.getenv("BINANCE_API_KEY")
 binance_secret_key = os.getenv("BINANCE_SECRET_KEY")
 
 client = Client(binance_api_key, binance_secret_key)
-tickers = client.get_all_tickers()
 
 
 def get_klines(symbol: Literal['ETHUSDT'] | Literal['BTCUSDT'], interval: str, quantity: int) -> pd.DataFrame:
