@@ -7,10 +7,10 @@ from movements import Data, BTC_IMPACT
 
 def print_dependency_level(data: Data) -> None:
     """This function makes a price movement graphic"""
-    # correlation = _get_correlation(data)
-    # print(f"Correlation: {correlation}")
-    # cointegration = _get_cointegration(data)
-    # print(f'Cointegration: {cointegration}')
+    correlation = _get_correlation(data)
+    print(f"Correlation: {correlation}")
+    cointegration = _get_cointegration(data)
+    print(f'Cointegration: {cointegration}')
     btc_impact_price = _get_predict(data)
     fig, ax = plt.subplots()
     data.data_eth.Close.plot(ax=ax)
