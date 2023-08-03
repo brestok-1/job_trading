@@ -16,7 +16,7 @@ class Data(NamedTuple):
 
 
 def get_own_movements(btc_impact: int):
-    """This function returns the Etherium exchange rate without the influence of Bitcoin"""
+    """This function returns the Ethereum exchange rate without the influence of Bitcoin"""
     last_price = _get_last_price()
     eth_own_price = last_price.data_eth['Close'].values - btc_impact * last_price.data_btc['Close'].values
     return eth_own_price
@@ -29,7 +29,7 @@ def _get_last_price() -> Data:
 
 
 def get_btc_ratio(data: Data) -> int:
-    """This function returns the coefficient of influence of Bitcoin on the Etherium"""
+    """This function returns the coefficient of influence of Bitcoin on the Ethereum"""
     linear_model = _get_regression_linear_model(data)
     btc_impact = linear_model.params[1]
     return btc_impact
@@ -50,7 +50,7 @@ def _reshape_data_btc(data: Data) -> numpy.ndarray:
 
 def print_eth_changes(eth_own_movements: list) -> None:
     """The function prints the result of the change
-     in the Etherium exchange rate without the influence of Bitcoin
+     in the Ethereum exchange rate without the influence of Bitcoin
      if the change was more than 1%"""
     changes = _get_changes_in_percent(eth_own_movements)
     if changes > 1:

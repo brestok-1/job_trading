@@ -1,4 +1,4 @@
-# <div align="center">Etherium tracking script 📈</div>
+# <div align="center">Ethereum tracking script 📈</div>
 
 <div align="center">
 <img src="assets/ethereum-1.jpg" align="center" style="width: 80%; height: 40%" />

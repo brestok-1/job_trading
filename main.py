@@ -11,7 +11,7 @@ def main():
 
 
 if __name__ == '__main__':
-    print('Etherium Tracking launched')
+    print('Ethereum Tracking launched')
     print_dependency_level(Data(DATA_ETH, DATA_BTC))
     while True:
         main()
