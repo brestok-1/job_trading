@@ -57,8 +57,8 @@ pip3 install -r requirements.txt
 ```
 
 3. Create a .env file and paste the data from the .env.example file into it
-4. In REDIS_HOST and POSTGRES_HOST, specify localhost
-5. In BOT_TOKEN, specify the token of your telegram bot created earlier via BotFather
-6. Run the file bot.py
+4. Log in to Binance, go to this page and create a new API key.
+5. Copy the API Key and Secret Key, paste their values into the BINANCE_API_KEY and BINANCE_SECRET_KEY variables.
+6. Run the file main.py
 
-## <div align="center">Thank you for using my store! 👋</div>
+## <div align="center">Thank you for using my script! 👋</div>
