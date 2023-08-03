@@ -1,7 +1,7 @@
-# <div align="center">CLOTHING STORE 🛍️</div>
+# <div align="center">Etherium tracking script 📈</div>
 
 <div align="center">
-<img src="assets/products.png" align="center" style="width: 100%; height: 40%" />
+<img src="assets/ethereum-1.jpg" align="center" style="width: 80%; height: 40%" />
 </div>
 
 <br/>
@@ -12,7 +12,7 @@ In this project, I have collected the most popular and necessary tools for creat
 ## Description
 
 <div align="center">
-<img src="assets/store.gif" align="center" style="width: 100%; height: 40%" />
+<img src="assets/btceth.jpg" align="center" style="width: 80%; height: 40%" />
 </div>
 
 <br/>
@@ -30,35 +30,20 @@ site.
 ***Languages***
 
 ![Python](https://img.shields.io/badge/-Python-1C1C1C?&style=for-the-badge)
-![JavaScript](https://img.shields.io/badge/-JavaScript-1C1C1C?&style=for-the-badge)
-![HTML](https://img.shields.io/badge/-HTML-1C1C1C?&style=for-the-badge)
-![CSS](https://img.shields.io/badge/-CSS-1C1C1C?&style=for-the-badge)
-
-***Framework***
-
-![Django](https://img.shields.io/badge/-Django-1C1C1C?&style=for-the-badge)
-
-***Databases***
-
-![Postgres](https://img.shields.io/badge/-Postgresql-1C1C1C?&style=for-the-badge)
-![Redis](https://img.shields.io/badge/-Redis-1C1C1C?&style=for-the-badge)
 
 ***Libraries***
 
-![Django-allauth](https://img.shields.io/badge/-Django--allauth-1C1C1C?&style=for-the-badge)
-![Celery](https://img.shields.io/badge/-Celery-1C1C1C?&style=for-the-badge)
-![Aiocron](https://img.shields.io/badge/-django--redis-1C1C1C?&style=for-the-badge)
-![Asyncpg](https://img.shields.io/badge/-psycopg2-1C1C1C?&style=for-the-badge)
-![aioredis](https://img.shields.io/badge/-stripe-1C1C1C?&style=for-the-badge)
-![Bootstrap](https://img.shields.io/badge/-Bootstrap-1C1C1C?&style=for-the-badge)
-![JQuery](https://img.shields.io/badge/-JQuery-1C1C1C?&style=for-the-badge)
+![Python-binance](https://img.shields.io/badge/-Python--binance-1C1C1C?&style=for-the-badge)
+![NumPy](https://img.shields.io/badge/-NumPy-1C1C1C?&style=for-the-badge)
+![Pandas](https://img.shields.io/badge/-Pandas-1C1C1C?&style=for-the-badge)
+![Matplotlib](https://img.shields.io/badge/-matplotlib-1C1C1C?&style=for-the-badge)
 
-***Other***
-
-![Docker](https://img.shields.io/badge/-Docker-1C1C1C?&style=for-the-badge)
-![StripeCLI](https://img.shields.io/badge/-Stripe_CLI-1C1C1C?&style=for-the-badge)
-
-The main technologies used in the project are data caching with Redis, asynchronous email confirmation sending (I also implemented the sending mechanism myself), social media authentication through django-allauth. The most time-consuming task was connecting to Stripe. In addition to writing a controller that handles payments, I also had to configure webhook operation. I also integrated Stripe products and the django admin panel so that when a new product is added, the data is also updated in Stripe. It was not easy to package all of this into a Docker container, ensure the seamless operation of each service, and automate the deployment of the web application in Docker.
+The main technologies used in the project are data caching with Redis, asynchronous email confirmation sending (I also
+implemented the sending mechanism myself), social media authentication through django-allauth. The most time-consuming
+task was connecting to Stripe. In addition to writing a controller that handles payments, I also had to configure
+webhook operation. I also integrated Stripe products and the django admin panel so that when a new product is added, the
+data is also updated in Stripe. It was not easy to package all of this into a Docker container, ensure the seamless
+operation of each service, and automate the deployment of the web application in Docker.
 
 ## Project setup
 
