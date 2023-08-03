@@ -6,8 +6,9 @@
 
 <br/>
 
-I made this django project to explore new technologies and libraries, as well as hone my docker containerization skill.
-In this project, I have collected the most popular and necessary tools for creating complex and full-fledged projects.
+I made a script that tracks Ethereum's own movements, without the influence of Bitcoin. Thanks to this project, I got
+acquainted with the Binance API, as well as with such mathematical concepts as correlation, the level of cointegration,
+the construction of linear regression models, and many others.
 
 ## Description
 
@@ -17,13 +18,16 @@ In this project, I have collected the most popular and necessary tools for creat
 
 <br/>
 
-This is one of the most complex Django projects that I have implemented to date. I created an online store where you can
-log in through social networks or register, receive email confirmation letters, purchase various products, sort them by
-categories, and then pay through the Stripe system. You can also see a list of all your orders and their status. This is
-a fully functional and ready-to-use online store.
+**I was given a test task**:
 
-Since I position myself as a backend developer, I focused on the internal components, not the appearance of the
-site.
+> 1. You need to determine the price movements of the ETHUSDT futures, excluding movements caused by the influence of
+     the
+     BTCUSDT price. Describe the methodology you chose, the parameters you selected, and why.
+> 2. Write a Python program that tracks the real-time price of ETHUSDT futures with minimal delay, and using the method
+     you selected, determines its own price movements. When the price changes by 1% in the last 60 minutes, the program
+     outputs a message to the console. The program should continue to run, constantly reading the current price.
+
+I have solved this task. I had to get acquainted with different methods and technologies of Data Science.
 
 ## Technologies
 
@@ -38,12 +42,14 @@ site.
 ![Pandas](https://img.shields.io/badge/-Pandas-1C1C1C?&style=for-the-badge)
 ![Matplotlib](https://img.shields.io/badge/-matplotlib-1C1C1C?&style=for-the-badge)
 
-The main technologies used in the project are data caching with Redis, asynchronous email confirmation sending (I also
-implemented the sending mechanism myself), social media authentication through django-allauth. The most time-consuming
-task was connecting to Stripe. In addition to writing a controller that handles payments, I also had to configure
-webhook operation. I also integrated Stripe products and the django admin panel so that when a new product is added, the
-data is also updated in Stripe. It was not easy to package all of this into a Docker container, ensure the seamless
-operation of each service, and automate the deployment of the web application in Docker.
+First, I received data from the last 120 BTCUSDT and ETHUSDT klines and convert them to Pandas Dataframe objects. Next,
+I determined the correlation levels of Pierce and cointegration by taking the closed price data of BTCUSDT as a
+constant. Next, I created a linear regression model, specifying the BTCUSDT data as a constant, and thus, in the obtained
+parameters, I determined the level of influence of BTCUSDT on ETHUSDT. Next, I analyzed the model and calculated the
+predicted effect of BTCUSDT price changes on ETHUSDT price changes by multiplying the BTCUSDT price variables by the
+factor 'BTC_IMPACT', which represents the force of influence, and built a graph consisting of the price movement of
+BTCUSDT, ETHUSDT and ETHUSDT's own movements. I got a dataframe with data of my own movements and wrote a function that
+determines the percentage of price change ETHUSDT.
 
 ## Project setup
 
@@ -59,6 +65,6 @@ pip3 install -r requirements.txt
 3. Create a .env file and paste the data from the .env.example file into it
 4. Log in to Binance, go to this page and create a new API key.
 5. Copy the API Key and Secret Key, paste their values into the BINANCE_API_KEY and BINANCE_SECRET_KEY variables.
-6. Run the file main.py
+6. Run the file main.
 
 ## <div align="center">Thank you for using my script! 👋</div>
